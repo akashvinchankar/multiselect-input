@@ -43,9 +43,14 @@ function App() {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Backspace" && searchTerm === "") {
+    if (
+      e.key === "Backspace" &&
+      searchTerm === "" &&
+      selectedUsers.length > 0
+    ) {
       const lastUser = selectedUsers[selectedUsers.length - 1];
       handleRemoveUser(lastUser);
+      setSuggestions([]);
     }
   };
 
