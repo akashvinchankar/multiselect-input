@@ -42,6 +42,13 @@ function App() {
     );
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Backspace" && searchTerm === "") {
+      const lastUser = selectedUsers[selectedUsers.length - 1];
+      handleRemoveUser(lastUser);
+    }
+  };
+
   return (
     <div className="user-search-container">
       <div className="user-search-input">
@@ -64,6 +71,7 @@ function App() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search for a user..."
+            onKeyDown={handleKeyDown}
           />
           {/* Search Suggestions */}
           <ul className="suggestions-list">
