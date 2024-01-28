@@ -24,7 +24,10 @@ function App() {
           .catch(console.error)
       );
     }
-    fetchUsers();
+
+    const debouncedFetch = setTimeout(fetchUsers, 500);
+
+    return () => clearTimeout(debouncedFetch);
   }, [searchTerm]);
 
   const handleSelectUser = (user) => {
